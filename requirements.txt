@@ -8,3 +8,4 @@ cohere
 chromadb
 requests
 gunicorn
+pillow
