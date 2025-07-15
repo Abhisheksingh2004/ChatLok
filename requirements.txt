@@ -7,3 +7,4 @@ openpyxl
 cohere
 chromadb
 requests
+gunicorn
