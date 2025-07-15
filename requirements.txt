@@ -1,0 +1,9 @@
+Flask
+python-dotenv
+pandas
+python-docx
+PyMuPDF
+openpyxl
+cohere
+chromadb
+requests

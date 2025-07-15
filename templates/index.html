@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatLok - AI Document Assistant</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='icon.png') }}" type="image/png">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <h1>🗽ChatLok<span class="red-dot">.<span></h1>
+        <div class="memory-stats" id="memoryStats" style="display: none;">
+          <small>Messages: <span id="messageCount">0</span></small>
+        </div>
+        <div class="header-buttons">
+          <div class="chat-clear-icon" onclick="clearChatOnly(event)" title="Clear Chat History">
+            <i class="fa-solid fa-broom" style="color: #4CAF50;"></i>
+          </div>
+          <div class="trash-icon" onclick="clearChat(event)" title="Clear All & Remove File">
+            <i class="fa-solid fa-trash" style="color: #fd086a;"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- File Upload Section -->
+      <div class="file-upload-container" id="fileUploadContainer">
+        <div class="welcome-section">
+          <h2>What can I help You?</h2>
+          <p class="subtitle">Support pdf, docx, txt, csv, excel, db and sql</p>
+        </div>
+
+        <div class="file-upload-section">
+          <div class="file-drop-zone" id="fileDropZone">
+            <div class="file-upload-content">
+              <div class="upload-icon">📁</div>
+              <p class="upload-text">Drop a file here or click to browse</p>
+              <input type="file" id="fileInput" class="file-input" accept=".pdf,.docx,.txt,.csv,.xlsx,.xls,.db,.sql">
+              <p class="file-size-note" style="font-size: 0.95em; color: #888; margin-top: 4px;">Maximum file size: 16
+                MB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Section (Hidden initially) -->
+      <div class="chat-section" id="chatSection" style="display: none;">
+        <div class="file-info" id="fileInfo">
+          <span class="file-name" id="fileName"></span>
+          <button class="change-file-btn" onclick="changeFile()">Change File</button>
+        </div>
+
+        <div class="chat-container">
+          <div class="chat-messages" id="chatMessages"></div>
+
+          <div class="chat-input-container">
+            <div class="input-container">
+              <textarea id="questionInput" placeholder="Ask anything about your document..." class="question-input"
+                rows="1"></textarea>
+              <button id="sendBtn" class="submit-btn" onclick="sendQuestion()">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading indicator -->
+      <div class="loading-indicator" id="loadingIndicator" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processing your request...
+          <br>
+              Wait for Big file....
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}?v={{ range(1, 10000) | random }}"></script>
+</body>
+
+</html>
